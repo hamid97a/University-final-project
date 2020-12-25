@@ -1,0 +1,54 @@
+﻿// RESET
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+}
+
+// TIMELINE ORDERED LIST
+ol.numbered {
+  $bullet-line-width: 3px;
+  $bullet-color: #b3b3b3;
+  $bullet-border-width: $bullet-line-width;
+  $bullet-background-color: white;
+  $bullet-size: 30px;
+  border-left: $bullet-line-width solid $bullet-color;
+  counter-reset: numbered-list 7;
+  margin-left: 10px;
+  position: relative;
+
+  li {
+    font-size: 16px;
+    line-height: 1.2;
+    margin-bottom: 30px;
+    padding-left: 30px;
+    &:last-child {
+      border-left: $bullet-line-width solid $bullet-background-color;
+      margin-left: -$bullet-line-width;
+    }
+
+    &:before {
+      $half-of-font-size: -0.5em;
+      background-color: $bullet-color;
+      border: $bullet-border-width solid $bullet-background-color;
+      border-radius: 50%;
+      color: $bullet-background-color;
+      content: counter(numbered-list, decimal);
+      counter-increment: numbered-list -1;
+      display: block;
+      font-weight: bold;
+      width: $bullet-size;
+      height: $bullet-size;
+      margin-top: $half-of-font-size;
+      line-height: $bullet-size;
+      position: absolute;
+      left: -$bullet-size / 2 - $bullet-line-width / 2 - $bullet-border-width;
+      text-align: center;
+    }
+  }
+}

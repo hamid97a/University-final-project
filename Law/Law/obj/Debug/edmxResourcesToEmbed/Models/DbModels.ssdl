@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Law_DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Approveds">
+    <Key>
+      <PropertyRef Name="ApprovedId" />
+    </Key>
+    <Property Name="ApprovedId" Type="int" Nullable="false" />
+    <Property Name="ApprovedName" Type="nvarchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Details">
+    <Key>
+      <PropertyRef Name="DetailId" />
+    </Key>
+    <Property Name="DetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" />
+    <Property Name="RuleId" Type="int" Nullable="false" />
+    <Property Name="ApprovedId" Type="int" Nullable="false" />
+    <Property Name="AnnouncementNumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="Article" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Rules">
+    <Key>
+      <PropertyRef Name="RuleId" />
+    </Key>
+    <Property Name="RuleId" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" />
+    <Property Name="ApprovalDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="AnnouncementDate" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Details_Approveds_ApprovedId">
+    <End Role="Approveds" Type="Self.Approveds" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Details" Type="Self.Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Approveds">
+        <PropertyRef Name="ApprovedId" />
+      </Principal>
+      <Dependent Role="Details">
+        <PropertyRef Name="ApprovedId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Details_Rules_RuleId">
+    <End Role="Rules" Type="Self.Rules" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Details" Type="Self.Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rules">
+        <PropertyRef Name="RuleId" />
+      </Principal>
+      <Dependent Role="Details">
+        <PropertyRef Name="RuleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Law_DbModelStoreContainer">
+    <EntitySet Name="Approveds" EntityType="Self.Approveds" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Details" EntityType="Self.Details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rules" EntityType="Self.Rules" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Details_Approveds_ApprovedId" Association="Self.FK_Details_Approveds_ApprovedId">
+      <End Role="Approveds" EntitySet="Approveds" />
+      <End Role="Details" EntitySet="Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Details_Rules_RuleId" Association="Self.FK_Details_Rules_RuleId">
+      <End Role="Rules" EntitySet="Rules" />
+      <End Role="Details" EntitySet="Details" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,187 @@
+﻿@using Law.Convertors
+@{ 
+ViewBag.Time = System.DateTime.Now.ToShamsi();
+    ViewBag.Title = "قوانین"; }
+
+<div class="iran">
+    <div class="container">
+        <nav>
+            <div class="row">
+                <div class="col-sm-10 col-xs-12">
+                    <ul>
+                        <li>
+                            Islamic Parliament Research Center Of The Islamic Republic Of IRAN
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-2 col-xs-12">
+                    <div class="clientarea">
+                        @ViewData["Time"]
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <!-- Left col -->
+        <div>
+            <div class="row title-custom">
+                <h2>
+                    قوانین و مقررات جمهوری اسلامی ایران
+                </h2>
+            </div>
+            <div class="card card-body">
+                <table id="jqGrid"></table>
+                <div id="jqControls"></div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row (main row) -->
+</div><!-- /.container-fluid -->
+
+@section scripts{
+
+    <script>
+        //import { url } from "inspector";
+
+        $(function () {
+            //var searchOptions = ['eq', 'lt', 'le', 'gt', 'ge', 'bw', 'bn', 'in', 'ni', 'ew', 'en', 'cn', 'nc'];
+            //debugger;
+            $("#jqGrid").jqGrid
+                ({
+                    url: "/Law/ShowGrid",
+                    datatype: "json",
+                    mtype: 'Get',
+                    //table header name
+                    colNames: ['کد یکتا', 'عنوان', 'تاریخ تصویب',
+                        'تاریخ ابلاغیه'],
+                    //colModel takes the data from controller and binds to grid
+                    colModel: [
+                        {
+                            key: true,
+                            hidden: true,
+                            name: "RuleId",
+                            index: 'RuleId',
+                            align: "center",
+                            sorttype: "string",
+                            width: 50,
+                            search: true
+                        },
+                        {
+                            key: false,
+                            search: true,
+                            name: "Title",
+                            index: 'Title',
+                            align: "center",
+                            sortable: false,
+                            sorttype: "string",
+                            width: 500,
+                            search: true
+                        },
+                        {
+                            key: false,
+                            search: true,
+                            name: "ApprovalDate",
+                            index: 'ApprovalDate',
+                            align: "center",
+                            sortable: true,
+                            sorttype: "string",
+                            width: 100
+                        },
+                        {
+                            key: false,
+                            search: true,
+                            name: "AnnouncementDate",
+                            index: 'AnnouncementDate',
+                            align: "center",
+                            sortable: true,
+                            sorttype: "string",
+                            width: 100
+                        },
+                    ],
+                    pager: jQuery('#jqControls'),
+                    rowNum: 10,
+                    rowList: [10, 20, 30, 40],
+                    height: 'auto',
+                    sortname: 'ApprovalDate',
+                    sortorder: "desc",
+                    gridview: true,
+                    viewrecords: true,
+                    shrinkToFit: true,
+                    rownumbers: true,
+                    caption: 'سامانه قوانین',
+                    direction: "rtl", // instructs the grid to use RTL settings
+                    emptyrecords: 'رکوردی برای نمایش وجود ندارد',
+
+                    jsonReader:
+                    {
+                        root: "rows",
+                        page: "page",
+                        total: "total",
+                        records: "records",
+                        repeatitems: false,
+                        sortable: true,
+                        Id: "0"
+                    },
+                    autowidth: true,
+                    multiselect: false,
+                    onSelectRow: function (id) {
+                        var url = "@Url.Action("Details", "Law")?id="+id;
+                        window.open(url);
+                    },
+                    //loadComplete: function () {
+                    //    ConvertNumberToPersion();
+                    //},
+                    loadError: function (xhr, st, err) {
+                        jQuery("#jqControls")
+                            .html("Type: " + st + "; Response: " + xhr.status + " " + xhr.statusText);
+                    },
+                }).navGrid('#jqControls', { search: true, refresh: true, edit: false, add: false, del: false,searchtext:"جستجو" ,closeAfterSearch: true},
+                    {
+                        zIndex: 100,
+                        caption: "جستجو",
+                        sopt: ['cn']
+                    })
+                .jqGrid('filterToolbar',
+                    {
+                        stringResult: true,
+                        searchOnEnter: true,
+                        autosearch: true,
+                        searchOperators: true,
+                        groupOp: 'AND',
+                        defaultSearch: 'cn'
+                    })
+                .jqGrid('navButtonAdd',
+                    '#jqControls',
+                    {
+                        caption: "",
+                        title: "تنظیم نمایش ستون ها",
+                        buttonicon: 'ui-icon-search',
+                        onClickButton: function () {
+                            jQuery("#jqGrid").jqGrid('columnChooser',
+                                {
+                                    done: function (perm) {
+                                        //SetGridCookie("jqGrid", "jq_Grid", perm);
+                                        console.log(perm);
+                                    }
+                                });
+                        }
+                    })
+                //.jqGrid('navButtonAdd', '#jqControls',
+                //    {
+                //        caption: "",
+                //        title: "فیلترهای جستجو",
+                //        buttonicon: 'ui-icon-search',
+                //        onClickButton: function () {
+                //            this.toggleToolbar();
+                //        }
+                //    }
+                //)
+        });
+
+    </script>
+
+}

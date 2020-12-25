@@ -1,0 +1,122 @@
+﻿@model Law.ViewModel.DetailViewModel
+@using Law.Convertors
+@{
+    Layout = "~/Views/Shared/_DetailLayout.cshtml";
+    ViewBag.Title = Model.Title;
+    ViewBag.Time = System.DateTime.Now.ToShamsi();
+    ViewData["RuleTitle"] = Model.Title;
+}
+
+<div class="iran">
+    <div class="container">
+        <nav>
+            <div class="row">
+                <div class="col-sm-10 col-xs-12">
+                    <ul>
+                        <li>
+                            Islamic Parliament Research Center Of The Islamic Republic Of IRAN
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-2 col-xs-12">
+                    <div class="clientarea">
+                        @ViewData["Time"]
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">سامانه قوانین</a></li>
+            <li class="breadcrumb-item active" aria-current="page"> @Model.Title</li>
+        </ul>
+    </nav>
+</div>
+
+<main>
+    <div class="container">
+        <div class="user-account">
+            <div class="row">
+                <div id="maindetail" class="col-md-9 col-sm-8 col-xs-8 last-maintab">
+                    <section class="user-account-content">
+                        <header><h1> سامانه قوانین </h1></header>
+                        <ul id="myTab" class="nav nav-tabs main-tab">
+                            <li class="active">
+                                <a href="#ltab1" data-toggle="tab">
+                                    متن قانون
+                                </a>
+                            </li>
+                        </ul>
+                        <div id="myTabContent" class="tab-content">
+                            <div class="tab-pane active in" id="ltab1">
+
+                                <h4 class="news-header">@Html.DisplayFor(model => model.Title)</h4>
+
+                                <pre style="white-space:pre-wrap; word-wrap: break-word;">
+@Html.DisplayFor(model=>model.Text)
+</pre>
+
+                            </div>
+                            <div class="top"></div>
+                        </div><!--/.myTabContent-->
+                    </section>
+                </div>
+
+                <div class="col-md-3 col-sm-4 col-xs-4 sidebar">
+                    <aside id="sidedetail" class="ideas">
+                        <div>
+                            <ul class="nav nav-pills">
+                                <li class="nav-item">
+                                    <div class=" img-title title-isgreen floated-left">
+                                        <p class="title-tab">جزئیات قانون</p>
+                                    </div><!--/.title-isgreen-->
+                                </li>
+                            </ul>
+                            <div class="sidebar-content">
+                                @*<h3 class="blue">
+                                        <a href="/fa/law/print_version/1629835" target="_blank"><img src="/cdn/icons/printer.png" border="0"></a>
+                                        <a href="/fa/law/print_version/1629835" target="_blank">نسخه قابل چاپ</a>
+                                    </h3>*@
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <span class="db">
+                                            @Html.DisplayNameFor(model => model.ApprovedName) :
+                                            @Html.DisplayFor(model => model.ApprovedName)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="db">
+                                            @Html.DisplayNameFor(model => model.ApprovalDate) :
+                                            @Html.DisplayFor(model => model.ApprovalDate)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="db">
+                                            @Html.DisplayNameFor(model => model.AnnouncementNumber) :
+                                            @Html.DisplayFor(model => model.AnnouncementNumber)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="db">
+                                            @Html.DisplayNameFor(model => model.AnnouncementDate) :
+                                            @Html.DisplayFor(model => model.AnnouncementDate)
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="db">
+                                            @Html.DisplayNameFor(model => model.Article) :
+                                            @Html.DisplayFor(model => model.Article)
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

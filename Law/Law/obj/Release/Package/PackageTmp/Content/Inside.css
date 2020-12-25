@@ -1,0 +1,54 @@
+﻿/*======================= comment module =====================*/
+.comment {
+    height: auto !important;
+}
+
+    .comment .col-sm-7, .comment .col-sm-5 {
+        float: right;
+    }
+
+    .comment .col-sm-offset-2 {
+        margin-right: 16.66667%;
+        margin-left: 0;
+    }
+
+    .comment .form-horizontal .control-label {
+        float: right;
+    }
+
+    .comment textarea.form-control {
+        height: 120px;
+    }
+
+.news-header, .gray {
+    font-size: 1.5625em;
+    font-family: mitra-bold;
+    color: #1e4b72;
+    margin-bottom: 20px;
+}
+
+.bold-news {
+    font-family: mitra-bold;
+}
+
+    .bold-news .pull-left {
+        margin-right: 10px;
+    }
+
+.news-content {
+    height: auto;
+}
+
+    .news-content .mid-tabwrapper {
+        height: auto;
+        margin-bottom: 25px;
+    }
+
+        .news-content .mid-tabwrapper p {
+            color: #555;
+            font-size: 1em;
+        }
+
+    .news-content.mid-row .sidebar .ideas {
+        margin-top: 0;
+    }

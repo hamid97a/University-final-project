@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Law_DbModelStoreContainer" CdmEntityContainer="DbModels">
+    <EntitySetMapping Name="Approveds">
+      <EntityTypeMapping TypeName="Law_DbModel.Approveds">
+        <MappingFragment StoreEntitySet="Approveds">
+          <ScalarProperty Name="ApprovedId" ColumnName="ApprovedId" />
+          <ScalarProperty Name="ApprovedName" ColumnName="ApprovedName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Details">
+      <EntityTypeMapping TypeName="Law_DbModel.Details">
+        <MappingFragment StoreEntitySet="Details">
+          <ScalarProperty Name="DetailId" ColumnName="DetailId" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="RuleId" ColumnName="RuleId" />
+          <ScalarProperty Name="ApprovedId" ColumnName="ApprovedId" />
+          <ScalarProperty Name="AnnouncementNumber" ColumnName="AnnouncementNumber" />
+          <ScalarProperty Name="Article" ColumnName="Article" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rules">
+      <EntityTypeMapping TypeName="Law_DbModel.Rules">
+        <MappingFragment StoreEntitySet="Rules">
+          <ScalarProperty Name="RuleId" ColumnName="RuleId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ApprovalDate" ColumnName="ApprovalDate" />
+          <ScalarProperty Name="AnnouncementDate" ColumnName="AnnouncementDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

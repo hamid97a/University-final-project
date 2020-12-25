@@ -1,0 +1,32 @@
+ # Details.py # We have except
+ # Details.py # We have except
+ # Details.py # We have except
+ # FillReferences.py # We have except to crawl References 2020-02-05 13:04:19.994280
+ # Details.py # We have except
+ # Details.py # We have except
+ # Details.py # We have except
+ # Details.py # We have except
+ # Pazhoohesh.py # In page : 16 and id : 1392529 we have except  2020-02-05 18:04:39.802251
+ # Pazhoohesh.py # In page : 16 and id : 1392529 we have except  2020-02-05 18:05:52.291923
+ # Pazhoohesh.py # In page : 3629 and id : 112076 we have except  2020-02-06 14:10:52.518797
+ # Details.py # We have except
+ # Pazhoohesh.py # In page : 583 and id : 816772 we have except  2020-02-06 19:25:14.350311
+ # Pazhoohesh.py # In page : 112 and id : 1079894 we have except  2020-02-06 19:58:22.042574
+ # Pazhoohesh.py # In page : 4261 and id : 106787 we have except  2020-02-14 17:38:11.660488
+ # Details.py # We have except
+ # Pazhoohesh.py # In page : 1 and id : 0 we have except  2020-02-25 21:31:37.526503
+ # Pazhoohesh.py # In page : 1 and id : 0 we have except  2020-02-25 21:31:55.442257
+ # Pazhoohesh.py # In page : 1 and id : 0 we have except  2020-02-25 21:34:31.370283
+ # Pazhoohesh.py # In page : 1 and id : 0 we have except  2020-02-25 21:36:18.627256
+ # FillReferences.py # We have except to crawl References 2020-02-25 23:30:34.184273
+ # FillReferences.py # We have except to crawl References 2020-02-25 23:30:50.627444
+ # Details.py # We have except
+ # Details.py # We have except
+ # Details.py # We have except
+ # Details.py # We have except
+ # Details.py # We have except
+ # Details.py # We have except
+ # Rules.py # In page : 20 and id : 1601322 we have except  2020-11-28 18:44:38.480297
+ # Rules.py # In page : 2401 and id : 93614 we have except  2020-11-28 19:34:46.582228
+ # Rules.py # In page : 5320 and id : 133549 we have except  2020-11-29 14:40:21.110854
+ # Rules.py # In page : 5320 and id : 133571 we have except  2020-11-29 15:20:14.401895

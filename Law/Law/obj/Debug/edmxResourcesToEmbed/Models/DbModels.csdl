@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Law_DbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Approveds">
+    <Key>
+      <PropertyRef Name="ApprovedId" />
+    </Key>
+    <Property Name="ApprovedId" Type="Int32" Nullable="false" />
+    <Property Name="ApprovedName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Details" Relationship="Self.FK_Details_Approveds_ApprovedId" FromRole="Approveds" ToRole="Details" />
+  </EntityType>
+  <EntityType Name="Details">
+    <Key>
+      <PropertyRef Name="DetailId" />
+    </Key>
+    <Property Name="DetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="RuleId" Type="Int32" Nullable="false" />
+    <Property Name="ApprovedId" Type="Int32" Nullable="false" />
+    <Property Name="AnnouncementNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Article" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Approveds" Relationship="Self.FK_Details_Approveds_ApprovedId" FromRole="Details" ToRole="Approveds" />
+    <NavigationProperty Name="Rules" Relationship="Self.FK_Details_Rules_RuleId" FromRole="Details" ToRole="Rules" />
+  </EntityType>
+  <EntityType Name="Rules">
+    <Key>
+      <PropertyRef Name="RuleId" />
+    </Key>
+    <Property Name="RuleId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ApprovalDate" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="AnnouncementDate" Type="DateTime" Nullable="false" Precision="7" />
+    <NavigationProperty Name="Details" Relationship="Self.FK_Details_Rules_RuleId" FromRole="Rules" ToRole="Details" />
+  </EntityType>
+  <Association Name="FK_Details_Approveds_ApprovedId">
+    <End Role="Approveds" Type="Self.Approveds" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Details" Type="Self.Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Approveds">
+        <PropertyRef Name="ApprovedId" />
+      </Principal>
+      <Dependent Role="Details">
+        <PropertyRef Name="ApprovedId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Details_Rules_RuleId">
+    <End Role="Rules" Type="Self.Rules" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Details" Type="Self.Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rules">
+        <PropertyRef Name="RuleId" />
+      </Principal>
+      <Dependent Role="Details">
+        <PropertyRef Name="RuleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DbModels" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Approveds" EntityType="Self.Approveds" />
+    <EntitySet Name="Details" EntityType="Self.Details" />
+    <EntitySet Name="Rules" EntityType="Self.Rules" />
+    <AssociationSet Name="FK_Details_Approveds_ApprovedId" Association="Self.FK_Details_Approveds_ApprovedId">
+      <End Role="Approveds" EntitySet="Approveds" />
+      <End Role="Details" EntitySet="Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Details_Rules_RuleId" Association="Self.FK_Details_Rules_RuleId">
+      <End Role="Rules" EntitySet="Rules" />
+      <End Role="Details" EntitySet="Details" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
